@@ -14,10 +14,10 @@ const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator >
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Registro" component={RegistroScreen} />
-      <Stack.Screen name="Drawer_Welcome" component={MyDrawer} />
+      <Stack.Screen name="Drawer_Welcome" component={MyDrawer}  />
     </Stack.Navigator>
   );
 }
@@ -37,7 +37,7 @@ function MyDrawer() {
 export default function MainNavigator(){
     return(
         <NavigationContainer>
-            <MyDrawer/>
+            <MyStack/>
         </NavigationContainer>
     )
 }

@@ -4,13 +4,13 @@ import React, { useState } from 'react'
 import * as ImagePicker from 'expo-image-picker';
 
 //FIREBASE
-import { ref, uploadBytes } from "firebase/storage";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from '../config/Config';
 
 
 export default function GeneralScreen() {
 
-  const [imagen, setImagen] = useState(' ')
+  const [imagen, setImagen] = useState('https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/User_icon-cp.svg/1656px-User_icon-cp.svg.png')
 
   // ABRIR LA CAMARA
   const seleccionarImagen = async () => {
@@ -45,8 +45,9 @@ export default function GeneralScreen() {
         Alert.alert('Mensaje', 'Imagen subida con exito')
 
         // Obtiene la URL de la imagen
-        //const imageURL = await getDownloadURL(storageRef);
-        //console.log('URL de desacarga de la imagen', imageURL);
+        const imageURL = await getDownloadURL(storageRef);
+        console.log('URL de desacarga de la imagen', imageURL);
+
     } catch (error) {
         console.error(error);
     }

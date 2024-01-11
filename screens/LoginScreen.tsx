@@ -17,7 +17,7 @@ function login(){
   .then((userCredential) => {
     // Signed in 
     const user = userCredential.user;
-   // navigation.navigate('Drawer_Welcome')
+    navigation.navigate('Drawer_Welcome')
 
 
     console.log(user);
@@ -42,18 +42,21 @@ function login(){
 }
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={{fontSize:30}}>Login</Text>
       <TextInput 
         placeholder='Ingrese correo'
         onChangeText={ (texto)=> setCorreo(texto)}
         keyboardType='email-address'
         autoCapitalize='none'
+        style={styles.input}
       />
 
       <TextInput 
         placeholder='Ingresar contraseña'
         onChangeText={ (texto)=> setContrasenia(texto)}
+        style={styles.input}
+
       />
 
      
@@ -66,6 +69,16 @@ function login(){
 
 const styles = StyleSheet.create({
   container:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  },
 
+  input:{
+    width:'80%',
+    borderWidth:1,
+    height:45,
+    marginBottom:10,
+    borderRadius:10
   }
 })
