@@ -26,7 +26,7 @@ const Drawer = createDrawerNavigator();
 
 function MyDrawer() {
   return (
-    <Drawer.Navigator>
+    <Drawer.Navigator initialRouteName='Recursos'>
         <Drawer.Screen name="Welcome" component={WelcomeScreen} />
         <Drawer.Screen name="General" component={GeneralScreen} />
         <Drawer.Screen name='Recursos' component={RecursosScreen}/>
@@ -37,7 +37,7 @@ function MyDrawer() {
 export default function MainNavigator(){
     return(
         <NavigationContainer>
-            <MyStack/>
+            <MyDrawer/>
         </NavigationContainer>
     )
 }
