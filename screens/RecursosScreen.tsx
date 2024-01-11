@@ -11,7 +11,7 @@ import { storage } from '../config/Config';
 
 export default function RecursosScreen() {
 
-  const [imagen, setImagen] = useState('')
+  const [imagen, setImagen] = useState(' ')
 
   //CARGAR IMAGEN
   const pickImage = async () => {
@@ -20,7 +20,7 @@ export default function RecursosScreen() {
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [1, 1],
-      quality: 0,
+      quality: 1,
     });
 
     console.log(result);
