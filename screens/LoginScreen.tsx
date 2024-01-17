@@ -20,7 +20,7 @@ function login(){
     navigation.navigate('Drawer_Welcome')
 
 
-    console.log(user);
+    //console.log(user);
 
     
   })

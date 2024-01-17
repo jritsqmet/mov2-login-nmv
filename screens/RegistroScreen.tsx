@@ -24,12 +24,12 @@ export default function RegistroScreen({ navigation }: any) {
         // Signed up 
         const user = userCredential.user;
 
-        navigation.navigate('Drawer_Welcome')
+        navigation.navigate('Login')
 
         console.log('Registro exitoso')
 
         // navigation.navigate('Drawer_Welcome')
-        console.log(user.uid);
+        //console.log(user.uid);
         setuserID(user.uid)
         guardar(user.uid, nick, correo, edad)
 
