@@ -26,7 +26,13 @@ export default function RegistroScreen({ navigation }: any) {
 
         navigation.navigate('Drawer_Welcome')
 
-        //console.log('Registro exitoso')
+        console.log('Registro exitoso')
+
+        // navigation.navigate('Drawer_Welcome')
+        console.log(user.uid);
+        setuserID(user.uid)
+        guardar(user.uid, nick, correo, edad)
+
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -50,7 +56,7 @@ export default function RegistroScreen({ navigation }: any) {
 
   function compuesta() {
     registro();
-    guardar(userID, nick, correo, edad)
+   // guardar(userID, nick, correo, edad)
   }
 
   return (
