@@ -55,13 +55,14 @@ export default function GeneralScreen() {
 
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text>SUBIR IMAGEN DESDE LA CAMARA</Text>
       <Button title='abrir camara' onPress={ ()=> seleccionarImagen()}/>
       <Image source ={{ uri: imagen}} style={styles.img}/>
 
       <TouchableOpacity style={styles.btn} onPress={()=> subirImagen('avatar2')}>
-        <Text>SUBIR IMAGEN A FIREBASE</Text>
+        <Text style={{fontSize:20}}>SUBIR IMAGEN A FIREBASE</Text>
+        <Image source={ require('../assets/images/subir.webp')} style={styles.img2}/>
       </TouchableOpacity>
     </View>
   )
@@ -74,8 +75,20 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   btn:{
-    width:'40%',
-    height:50,
-    backgroundColor:'#C0E8D5'
+    width:'70%',
+    height:80,
+    backgroundColor:'#C0E8D5',
+    borderRadius:50,
+    alignItems:'center',
+    padding:10
+  },
+  container:{
+    flex:1,
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  img2:{
+    width:40,
+    height:40
   }
 })

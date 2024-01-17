@@ -1,4 +1,4 @@
-import { Alert, Button, StyleSheet, Text, View } from 'react-native'
+import { Alert, Button, ImageBackground, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 
@@ -42,7 +42,8 @@ function login(){
 }
 
   return (
-    <View style={styles.container}>
+    <ImageBackground style={styles.container} source={require('../assets/images/ima.jpg')}>
+    
       <Text style={{fontSize:30}}>Login</Text>
       <TextInput 
         placeholder='Ingrese correo'
@@ -50,20 +51,23 @@ function login(){
         keyboardType='email-address'
         autoCapitalize='none'
         style={styles.input}
+        placeholderTextColor={'white'}
       />
 
       <TextInput 
         placeholder='Ingresar contraseña'
         onChangeText={ (texto)=> setContrasenia(texto)}
         style={styles.input}
-
+        placeholderTextColor={'white'}
+      
       />
 
      
       <Button title='Ingresar' onPress={()=> login()}/>
 
-      <Text onPress={()=> navigation.navigate('Registro')}> 👉 Regístrate aquí 👈</Text>
-    </View>
+      <Text onPress={()=> navigation.navigate('Registro')} style={{color:'white', fontSize:20}}> 👉 Regístrate aquí 👈</Text>
+    
+    </ImageBackground>
   )
 }
 
@@ -79,6 +83,9 @@ const styles = StyleSheet.create({
     borderWidth:1,
     height:45,
     marginBottom:10,
-    borderRadius:10
+    borderRadius:10,
+    backgroundColor:'#5E8AB4',
+    paddingHorizontal:20,
+    color:'#B8DDE1'
   }
 })

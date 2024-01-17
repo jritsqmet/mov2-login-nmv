@@ -5,10 +5,17 @@ import { TextInput } from 'react-native-gesture-handler'
 //FIREBASE
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../config/Config';
+import { ref, set } from "firebase/database";
+import { db } from '../config/Config';
 
-export default function RegistroScreen( {navigation} : any) {
+
+export default function RegistroScreen({ navigation }: any) {
   const [correo, setcorreo] = useState('')
   const [contrasenia, setContrasenia] = useState('')
+  const [nick, setnick] = useState('')
+  const [edad, setedad] = useState('')
+
+  const [userID, setuserID] = useState('')
 
 
   function registro() {
@@ -18,19 +25,32 @@ export default function RegistroScreen( {navigation} : any) {
         const user = userCredential.user;
 
         navigation.navigate('Drawer_Welcome')
-        
+
         //console.log('Registro exitoso')
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         // ..
-       console.log(errorCode)
-        if ( errorCode === 'auth/email-already-in-use'){
+        console.log(errorCode)
+        if (errorCode === 'auth/email-already-in-use') {
           Alert.alert('Error', 'El correo ingresado ya esta en uso')
         }
 
       });
+  }
+
+  function guardar(id: string, nick: string, correo: string, edad: string) {
+    set(ref(db, 'jugadores/' + id), {
+      nick: nick,
+      email: correo,
+      edad: edad
+    });
+  }
+
+  function compuesta() {
+    registro();
+    guardar(userID, nick, correo, edad)
   }
 
   return (
@@ -46,7 +66,16 @@ export default function RegistroScreen( {navigation} : any) {
         onChangeText={(texto) => setContrasenia(texto)}
       />
 
-      <Button title='registrarse' onPress={()=> registro()} />
+      <TextInput
+        placeholder="Ingrese un nick"
+        onChangeText={(texto) => setnick(texto)}
+      />
+      <TextInput
+        placeholder="Edad"
+        onChangeText={(texto) => setedad(texto)}
+      />
+
+      <Button title='registrarse' onPress={() => compuesta()} />
 
     </View>
   )
